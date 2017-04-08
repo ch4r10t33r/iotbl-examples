@@ -22,6 +22,10 @@ contract Artefact {
     commAmount = _commAmount;
   }
 
+  function getArtefactName() returns (string) {
+    return ARTEFACT_NAME;
+  }
+
   function transferOwner(address _newOwner) onlyOwner {
     if(msg.sender != owner) {
       throw;
