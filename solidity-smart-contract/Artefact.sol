@@ -8,6 +8,12 @@ contract Artefact {
   address commReceiver;
   uint commAmount;
 
+  modifier onlyOwner {
+      if (msg.sender != owner)
+          throw;
+      _;
+  }
+
   function Aretfact(string _name,string _hash,address _receiver,uint _commAmount) {
     owner = msg.sender;
     ARTEFACT_NAME = _name;
@@ -16,7 +22,7 @@ contract Artefact {
     commAmount = _commAmount;
   }
 
-  function transferOwner(address _newOwner) {
+  function transferOwner(address _newOwner) onlyOwner {
     if(msg.sender != owner) {
       throw;
     }
